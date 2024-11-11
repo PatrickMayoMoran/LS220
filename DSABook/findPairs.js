@@ -20,7 +20,7 @@ function generatePairs(array) {
 */
 
 function findPair(array) {
-  for (let i = 0; i < array.length - 1; i += 1) {
+  for (let i = 0; i < array.length - 2; i += 1) {
     for (let j = i + 1; j < array.length; j += 1) {
       let n1 = array[i];
       let n2 = array[j];
