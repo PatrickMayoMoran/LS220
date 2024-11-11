@@ -7,6 +7,7 @@
 
 // Test Cases:
 
+/*
 function generatePairs(array) {
   let pairs = [];
   for (let i = 0; i < array.length - 1; i += 1) {
@@ -16,13 +17,27 @@ function generatePairs(array) {
   }
   return pairs;
 }
+*/
 
 function findPair(array) {
-  let pairs = generatePairs(array);
+  for (let i = 0; i < array.length - 1; i += 1) {
+    for (let j = i + 1; j < array.length; j += 1) {
+      let n1 = array[i];
+      let n2 = array[j];
+      let pair = [n1, n2];
+      if (addToTen(n1, n2)) return pair;
+    }
+  }
+
+    return null;
+}
+
+/*
   let pair = pairs.filter(([n1, n2]) => addToTen(n1, n2));
   if (pair.length === 0) return null;
   return pair.flat();
 }
+*/
 
 function addToTen(num1, num2) {
   return (num1 + num2) === 10;
