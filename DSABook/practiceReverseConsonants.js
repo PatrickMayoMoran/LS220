@@ -25,7 +25,8 @@ function reverseConsonants(string) {
 }
 */
 
-// optimized - start end pointer
+// ORIGINAL optimized - start end pointer
+/*
 function reverseConsonants(string) {
   const len = string.length;
   if (len === 0) return string;
@@ -47,6 +48,34 @@ function reverseConsonants(string) {
       continue;
     }
     start++;
+  }
+
+  return chars.join('');
+}
+*/
+
+// SOLUTION optimized
+const isConsonant = (char) => {
+  return 'bcdfghjklmnpqrstvwxyz'.includes(char.toLowerCase());
+}
+
+function reverseConsonants(string) {
+  let chars = string.split('');
+  let s = 0;
+  let e = string.length - 1;
+
+  while (s < e) {
+    if (!isConsonant(chars[s])) {
+      s++;
+      continue;
+    }
+    if (!isConsonant(chars[e])) {
+      e--;
+      continue;
+    }
+    [chars[s], chars[e]] = [chars[e], chars[s]];
+    s++;
+    e--;
   }
 
   return chars.join('');
