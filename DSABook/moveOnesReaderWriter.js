@@ -4,7 +4,7 @@ function moveOnes(array) {
 
   while (reader < array.length) {
     if (array[reader] !== 1) {
-      [array[writer]] = [array[reader]];
+      array[writer] = array[reader];
       writer++;
     }
     reader++;
