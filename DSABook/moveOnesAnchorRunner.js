@@ -6,10 +6,8 @@ function moveOnes(arr) {
     if (arr[runner] !== 1) {
       [arr[anchor], arr[runner]] = [arr[runner], arr[anchor]];
       anchor++;
-      runner++;
-    } else {
-      runner++;
     }
+    runner++;
   }
 
   return arr;
