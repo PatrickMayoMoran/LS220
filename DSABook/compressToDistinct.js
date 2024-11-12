@@ -25,6 +25,7 @@ function testCompressToDistinct(array, expectedLength) {
   return isSameObject && isLengthCorrect && isModifiedCorrectly;
 }
 
+/* ORIGINAL optimized solution
 function compressToDistinct(array) {
   let writer = 0;
   let reader = 1;
@@ -39,6 +40,22 @@ function compressToDistinct(array) {
   }
 
   return array.length;
+}
+*/
+
+function compressToDistinct(array) {
+  if (array.length <= 1) return array.length;
+
+  let anchor = 0;
+
+  for (let runner = 0; runner < array.length; runner++) {
+    if (array[anchor] !== array[runner]) {
+      anchor++;
+      array[anchor] = array[runner];
+    }
+  }
+
+  return anchor + 1;
 }
 
 console.log(testCompressToDistinct([3, 3, 5, 7, 7, 8], 4));
