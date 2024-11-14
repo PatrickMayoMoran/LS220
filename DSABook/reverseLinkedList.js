@@ -13,17 +13,14 @@ function reverseLinkedList(head) {
   let prev = null;
   let curr = head;
 
-  while (curr) {
-    let nextNode = curr.next;
-
-    if (curr) {
-      curr.next = prev;
-      prev = curr;
-    }
-    curr = nextNode;
+  while (curr !== null) {
+    let nextNode = curr.next; // hold on to next
+    curr.next = prev;         // point backwards aka reverse
+    prev = curr;              // slide prev pointer forward
+    curr = nextNode;          // slide curr pointer forward
   }
 
-  return prev;
+  return prev;                // once curr is null, return prev which is new head
 }
 
 // Helper function to print the linked list
