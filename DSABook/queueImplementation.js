@@ -18,7 +18,7 @@ class Queue {
 
   enqueue(value) {
     // Adds an item to the queue
-    let newNode = new ListNode(value, this.back);
+    let newNode = new ListNode(value);
     if (!this.back) {
       this.front = newNode;
       this.back = newNode;
