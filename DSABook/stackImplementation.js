@@ -11,21 +11,22 @@ class Stack {
   }
   peek() {
     // Returns the value of the top most element without removing it.
-    if (this.top) return this.top.val;
     // If the stack is empty, it returns `null`.
-    return null;
+    return this.top ? this.top.val : null;
   }
 
   push(value) {
     // Adds an item to the stack
-    this.top = new ListNode(value);
+    this.top = new ListNode(value, this.top);
   }
 
   pop() {
     // Removes the item from the stack and returns it
-    return this.top;
-
     // If the stack is empty, it returns `null`.
+    if (!this.top) return null;
+    let popped = this.top;
+    this.top = this.top.next;
+    return popped.val;
   }
 }
 
