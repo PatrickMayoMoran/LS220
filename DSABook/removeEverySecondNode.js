@@ -10,6 +10,7 @@ class ListNode {
   }
 }
 
+/*
 function removeEverySecondNode(head) {
   if (!head) return null;
 
@@ -25,6 +26,16 @@ function removeEverySecondNode(head) {
       prev = curr;
       secondNode = true;
     }
+    curr = curr.next;
+  }
+  return head;
+}
+*/
+
+function removeEverySecondNode(head) {
+  let curr = head;
+  while (curr && curr.next) {
+    curr.next = curr.next.next;
     curr = curr.next;
   }
   return head;
