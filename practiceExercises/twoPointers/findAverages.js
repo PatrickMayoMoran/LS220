@@ -1,3 +1,5 @@
+/*
+ORIGINAL SOLUTION
 function findAverages(numbers, size) {
   let anchor = 0;
   let runner = 0;
@@ -20,6 +22,26 @@ function findAverages(numbers, size) {
 
   return averages;
 }
+*/
+// PROVIDED SOLUTION
+function findAverages(numbers, size) {
+  let result = [];
+  let windowSum = 0;
+  let left = 0;
+
+  for (let right = 0; right < numbers.length; right++) {
+    windowSum += numbers[right];
+
+    if (right >= size - 1) {
+      result.push(windowSum / size);
+      windowSum -= numbers[left];
+      left++;
+    }
+  }
+
+  return result;
+}
+
 console.log(findAverages([1, 2, 3, 4, 5, 6], 3)); // [ 2, 3, 4, 5 ]
 console.log(findAverages([1, 2, 3, 4, 5], 2));    // [1.5, 2.5, 3.5, 4.5]
 console.log(findAverages([10, 20, 30, 40, 50], 4)); // [ 25, 35 ]
