@@ -23,6 +23,7 @@ function findAverages(numbers, size) {
   return averages;
 }
 */
+/*
 // PROVIDED SOLUTION
 function findAverages(numbers, size) {
   let result = [];
@@ -36,6 +37,24 @@ function findAverages(numbers, size) {
       result.push(windowSum / size);
       windowSum -= numbers[left];
       left++;
+    }
+  }
+
+  return result;
+}
+*/
+
+// ALTERNATE SOLUTION
+function findAverages(nums, k) {
+  let windowSum = 0;
+  let result = [];
+
+  for (let i = 0; i < nums.length; i++) {
+    windowSum += nums[i];
+
+    if (i >= k - 1) {
+      result.push(windowSum / k);
+      windowSum -= nums[i - k + 1];
     }
   }
 
