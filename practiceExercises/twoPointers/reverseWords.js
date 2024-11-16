@@ -1,3 +1,5 @@
+/*
+ORIGINAL SOLUTION
 function reverseWords(sentence) {
   let words = sentence.split(' ');
   return words.map(reverseWord).join(' ');
@@ -14,6 +16,28 @@ function reverseWord(word) {
   }
 
   return letters.join('');
+}
+*/
+
+// ANCHOR RUNNER, but no anchor needed
+function reverseWords(string) {
+  let runner = 0;
+  let reversed = '';
+
+  while (runner < string.length) {
+    let currentWord = '';
+    while (runner < string.length && string[runner] !== ' ') {
+      currentWord = string[runner] + currentWord;
+      runner += 1;
+    }
+
+    reversed += currentWord;
+    if (runner < string.length) {
+      reversed += ' ';
+      runner += 1;
+    }
+  }
+  return reversed;
 }
 
 console.log(reverseWords("Hello World") === "olleH dlroW");
