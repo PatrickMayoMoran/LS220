@@ -38,11 +38,7 @@ function mergeSortedLists(list1, list2) {
       current = current.next;
     }
 
-    if (list1 === null) {
-      current.next = list2;
-    } else {
-      current.next = list1;
-    }
+  current.next = list1 === null ? list2 : list1;
 
   return newHead.next;
 }
