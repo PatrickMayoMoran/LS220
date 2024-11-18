@@ -29,7 +29,22 @@ let list3 = createLinkedList([1], -1);
 let list4 = createLinkedList([10, 20, 30, 40, 50, 60], 3);
 let list5 = createLinkedList([5, 15, 25, 35, 45], -1);
 
+// Hash table solution? don't think this is right - assumes unique values
 function hasCycle(head) {
+  let current = head;
+  let seen = {};
+
+  while (current !== null) {
+    if (seen[current.val]) {
+      return true;
+    }
+    else {
+      seen[current.val] = true;
+      current = current.next;
+    }
+  }
+
+  return false;
 }
 
 console.log(hasCycle(list1)) // true
