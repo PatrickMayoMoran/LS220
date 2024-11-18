@@ -33,7 +33,7 @@ let list5 = createLinkedList([5]);
 function deleteDuplicates(head) {
   let current = head;
 
-  while (current.next !== null) {
+  while (current !== null && current.next !== null) {
     if (current.val === current.next.val) {
       current.next = current.next.next;
     } else {
