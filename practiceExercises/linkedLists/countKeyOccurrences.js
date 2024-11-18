@@ -24,7 +24,9 @@ function countKeyOccurrences(head, target) {
   let count = 0;
   let current = head;
 
-  while (current) {
+  // while (current) { // this is no good - wouldn't accept undefined or other
+  // falsy values - 0, '' - when the only thing we don't want is null
+  while (current !== null) {
     if (current.val === target) count += 1;
     current = current.next;
   }
