@@ -1,7 +1,7 @@
 function isTargetFrequent(nums, target) {
   let leftIndex = findLeftEdge(nums, target);
   let rightIndex = findRightEdge(nums, target);
-  return ((rightIndex > 0 && leftIndex > 0) && rightIndex - leftIndex >= target - 1);
+  return ((rightIndex >= 0 && leftIndex >= 0) && rightIndex - leftIndex >= 3);
 }
 
 function findLeftEdge(nums, target) {
@@ -14,7 +14,7 @@ function findLeftEdge(nums, target) {
     let currentNum = nums[mid];
 
     if (currentNum >= target) {
-      leftEdge = mid;
+      if (currentNum === target) leftEdge = mid;
       right = mid - 1;
     } else {
       left = mid + 1;
@@ -34,7 +34,7 @@ function findRightEdge(nums, target) {
     let currentNum = nums[mid];
 
     if (currentNum <= target) {
-      rightEdge = mid;
+      if (currentNum === target) rightEdge = mid;
       left = mid + 1;
     } else {
       right = mid - 1;
