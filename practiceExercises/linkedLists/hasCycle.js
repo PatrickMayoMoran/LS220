@@ -31,14 +31,14 @@ let list5 = createLinkedList([5, 15, 25, 35, 45], -1);
 
 function hasCycle(head) {
   let slow = head;
-  let fast = head.next;
+  let fast = head;
 
-  while (slow !== null && fast !== null) {
+  while (fast && fast.next) {
+    slow = slow.next;
+    fast = fast.next.next;
+
     if (slow === fast) {
       return true;
-    } else {
-      slow = slow.next;
-      fast = fast.next.next;
     }
   }
 
