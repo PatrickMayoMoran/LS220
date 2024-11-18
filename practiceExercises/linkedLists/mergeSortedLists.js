@@ -23,27 +23,25 @@ function printLinkedList(head) {
   console.log(listStr);
 }
 
-function mergeSortedLists(head1, head2) {
+function mergeSortedLists(list1, list2) {
   let newHead = new ListNode(0);
   let current = newHead;
-  let current1 = head1;
-  let current2 = head2;
 
-  while (current1 !== null && current2 !== null) {
-      if (current1.val < current2.val) {
-        current.next = current1;
-        current1 = current1.next;
+  while (list1 !== null && list2 !== null) {
+      if (list1.val < list2.val) {
+        current.next = list1;
+        list1 = list1.next;
       } else {
-        current.next = current2;
-        current2 = current2.next;
+        current.next = list2;
+        list2 = list2.next;
       }
       current = current.next;
     }
 
-    if (current1 === null) {
-      current.next = current2;
+    if (list1 === null) {
+      current.next = list2;
     } else {
-      current.next = current1;
+      current.next = list1;
     }
 
   return newHead.next;
