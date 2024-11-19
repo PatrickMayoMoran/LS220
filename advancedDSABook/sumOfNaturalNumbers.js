@@ -6,7 +6,7 @@
 // For example, if `n` is 5, the sum would be 1 + 2 + 3 + 4 + 5 == 15.
 
 function sumOfNaturalNumbers(number) {
-  if (number === 0) return 0;
+  if (number <= 1) return number;
   return number + sumOfNaturalNumbers(number - 1);
 }
 
