@@ -62,6 +62,24 @@ function buildTree(arr) {
 }
 
 // Test Cases
+function getHeight(root) {
+  // if a node has no children, it is a leaf and return height of 1
+  // if a node has children, its height is 1 plus the greater of the height of
+  // the left or right node
+  function helper(node) {
+    if (node.left === null && node.right === null) {
+      return 1;
+    } else if (node.left === null) {
+      return 1 + helper(node.right);
+    } else if (node.right === null) {
+      return 1 + helper(node.left);
+    } else {
+      return 1 + Math.max(helper(node.left), helper(node.right));
+    }
+  }
+
+  return helper(root);
+}
 
 const tree1 = buildTree([1]);
 console.log(getHeight(tree1) === 1);
