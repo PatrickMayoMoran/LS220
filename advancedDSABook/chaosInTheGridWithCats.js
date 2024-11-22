@@ -32,7 +32,32 @@ const grid = [
 // 1. Down -> Right -> Right
 
 function chaosInTheGridWithCats(grid) {
-  // implementation
+  const rows = grid.length;
+  const cols = grid[0].length;
+  const cache = new Map();
+
+  function helper(row, col) {
+    if (row < 0 || col < 0 || grid[row][col] === "C") {
+      return 0;
+    }
+    if (row === 0 && col === 0) {
+      return 1;
+    }
+
+    const key = `${row} ${col}`;
+
+    if (cache.has(key)) {
+      return cache.get(key);
+    }
+
+    const paths = helper(row - 1, col) + helper(row, col - 1);
+
+    cache.set(key, paths);
+
+    return paths;
+  }
+
+  return helper(rows - 1, cols - 1);
 }
 
 // Test Cases:
