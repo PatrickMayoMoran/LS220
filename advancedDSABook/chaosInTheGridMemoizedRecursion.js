@@ -1,7 +1,7 @@
 function chaosInTheGrid(grid) {
-  const rows = grid.length;
-  const cols = grid[0].length;
-  const cache = new Map();
+  let rows = grid.length - 1;
+  let cols = grid[0].length - 1;
+  let cache = new Map();
 
   function pathsToCoord(row, col) {
     if (row === 0 || col === 0) {
@@ -14,14 +14,14 @@ function chaosInTheGrid(grid) {
       return cache.get(key);
     }
 
-    const paths = pathsToCoord(row - 1, col) + pathsToCoord(row, col - 1);
+    let paths = pathsToCoord(row - 1, col) + pathsToCoord(row, col - 1);
 
     cache.set(key, paths);
 
-    return paths;
+    return paths
   }
 
-  return pathsToCoord(rows - 1, cols - 1);
+  return pathsToCoord(rows, cols);
 }
 
 const grid1 = [[""]];
