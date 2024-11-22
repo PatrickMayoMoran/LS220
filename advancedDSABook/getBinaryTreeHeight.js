@@ -62,6 +62,8 @@ function buildTree(arr) {
 }
 
 // Test Cases
+/*
+INITIAL - did not realize that default ending point was "null" for children
 function getHeight(root) {
   // if a node has no children, it is a leaf and return height of 1
   // if a node has children, its height is 1 plus the greater of the height of
@@ -79,6 +81,15 @@ function getHeight(root) {
   }
 
   return helper(root);
+}
+*/
+
+function getHeight(root) {
+  if (root === null) {
+    return 0;
+  }
+
+  return 1 + Math.max(getHeight(root.left), getHeight(root.right));
 }
 
 const tree1 = buildTree([1]);
