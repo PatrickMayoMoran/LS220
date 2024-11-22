@@ -34,21 +34,23 @@ const grid = [
 function chaosInTheGridWithCats(grid) {
   let rows = grid.length;
   let cols = grid[0].length;
+  let dp = new Array(rows).fill().map(() => new Array(cols).fill(0));
 
   for (let col = 0; col < cols; col++) {
     for (let row = 0; row < rows; row++) {
-      if (row === 0 && col === 0 && grid[row][col] !== "C") {
-        grid[row][col] = 1;
-      } else if (grid[row][col] === "C") {
-        grid[row][col] = 0;
-        continue;
+      if (grid[row][col] === "C") {
+        dp[row][col] = 0;
+      } else if (row === 0 && col === 0) {
+        dp[row][col] = 1;
       } else {
-        grid[row][col] = (grid[row - 1][col] || 0) + (grid[row][col - 1] || 0);
+        let fromTop = row > 0 ? dp[row - 1][col] : 0;
+        let fromLeft = col > 0 ? dp[row][col - 1] : 0;
+        dp[row][col] = fromTop + fromLeft;
       }
     }
   }
 
-  return grid[rows - 1][cols - 1];
+  return dp[rows - 1][cols - 1];
 }
 
 // Test Cases:
