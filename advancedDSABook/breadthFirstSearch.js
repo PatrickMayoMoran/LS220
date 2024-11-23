@@ -45,15 +45,17 @@ function buildTree(arr) {
 }
 
 function bfs(root) {
-  const queue = [];
-  queue.push(root);
   const result = [];
+  if (root === null) return result;
+
+  const queue = [root];
 
   while (queue.length > 0) {
-    let node = queue[0];
+    const node = queue.shift();
+    result.push(node.val);
+
     if (node.left !== null) queue.push(node.left);
     if (node.right !== null) queue.push(node.right);
-    result.push(queue.shift().val);
   }
 
   return result;
