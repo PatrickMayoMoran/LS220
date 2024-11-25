@@ -4,10 +4,9 @@
 // traversal order.
 
 function dfs(adjList, source) {
-  const stack = [];
+  const stack = [source];
   const result = [];
 
-  stack.push(source);
   while (stack.length > 0) {
     let current = stack.pop();
     result.push(current);
