@@ -44,16 +44,14 @@ function buildTree(arr) {
   return root;
 }
 
-function findNodeInBST(root, target) {
-  let node = root;
-  while (node !== null) {
-    if (node.val === target) {
-      return true;
-    } else if (target > node.val) {
-      node = node.right;
-    } else {
-      node = node.left;
-    }
+function findNodeInBST(node, target) {
+  if (node === null) return false;
+  if (node.val === target) return true;
+
+  if (target > node.val) {
+    return findNodeInBST(node.right, target);
+  } else {
+    return findNodeInBST(node.left, target);
   }
 
   return false;
