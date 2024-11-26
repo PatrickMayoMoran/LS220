@@ -16,10 +16,9 @@ function hasPath(edgeList, src, dst) {
     let neighbors = adjList.get(vertex);
     for (let neighbor of neighbors) {
       if (!visited.has(neighbor)) {
-        return helper(neighbor);
-        // if (helper(neighbor)) {
-        //   return true;
-        // }
+        if (helper(neighbor)) {
+          return true;
+        }
       }
     }
 
