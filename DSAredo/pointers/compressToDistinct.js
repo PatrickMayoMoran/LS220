@@ -26,19 +26,18 @@ function testCompressToDistinct(array, expectedLength) {
 }
 
 function compressToDistinct(array) {
-  let writer = 0;
-  let reader = 0;
+  if (array.length <= 1) return array.length;
 
-  while (reader < array.length) {
-    if (array[reader] === array[writer]) {
-      reader++;
-    } else {
-      writer++;
-      array[writer] = array[reader];
+  let anchor = 0;
+
+  for (let runner = 1; runner < array.length; runner++) {
+    if (array[runner] !== array[anchor]) {
+      anchor++;
+      array[anchor] = array[runner];
     }
   }
 
-  return writer + 1;
+  return anchor + 1;
 }
 
 console.log(testCompressToDistinct([3, 3, 5, 7, 7, 8], 4));
