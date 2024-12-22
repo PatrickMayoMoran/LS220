@@ -11,17 +11,16 @@ function reverseConsonants(string) {
   while (start < end) {
     if (vowels.test(chars[start])) {
       start++;
+      continue;
     }
-
     if (vowels.test(chars[end])) {
       end--;
+      continue;
     }
 
-    if (!vowels.test(chars[start]) && !vowels.test(chars[end])) {
-      [chars[start], chars[end]] = [chars[end], chars[start]];
-      start++;
-      end--;
-    }
+    [chars[start], chars[end]] = [chars[end], chars[start]];
+    start++;
+    end--;
 
   }
 
