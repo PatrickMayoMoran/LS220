@@ -3,13 +3,12 @@ function moveOnes(arr) {
   let runner = 0;
 
   while (runner < arr.length) {
-    if (arr[runner] === 1) {
-      runner++;
-    } else if (arr[runner] !== 1) {
+    if (arr[runner] !== 1) {
       [arr[anchor], arr[runner]] = [arr[runner], arr[anchor]];
       anchor++;
-      runner++;
     }
+
+    runner++;
   }
 
   return arr;
