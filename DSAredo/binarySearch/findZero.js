@@ -18,3 +18,4 @@ function findZeroPosition(array) {
 
 console.log(findZeroPosition([-7, -5, -3, 0, 2])); // 3
 console.log(findZeroPosition([3,5,7,9,11])); // 0
+console.log(findZeroPosition([-3,-2,-1,1,2,3])); // 3
