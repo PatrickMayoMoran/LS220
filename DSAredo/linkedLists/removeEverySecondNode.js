@@ -11,9 +11,6 @@ class ListNode {
 }
 
 function removeEverySecondNode(head) {
-  if (!head) return head;
-
-  let dummy = head;
   let curr = head;
 
   while (curr && curr.next) {
@@ -21,7 +18,7 @@ function removeEverySecondNode(head) {
     curr = curr.next;
   }
 
-  return dummy;
+  return head;
 }
 
 function printLinkedList(head) {
