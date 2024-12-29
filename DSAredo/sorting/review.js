@@ -28,7 +28,32 @@ function bubbleSort(array) {
   return array;
 }
 
+/*
+Selection Sort
+Time: O(N^2) because we are repeatedly iterating through the collection to select
+      the smallest element and move it to the front
+Space: O(1) - no additional space requirements that scale with the size of the collection
+How? Build from left to right by selecting the smallest element and moving to the next      spot
+*/
+
 function selectionSort(array) {
+  const len = array.length;
+
+  for (let i = 0; i < len - 1; i++) {
+    let smallest = i;
+
+    for (let j = i + 1; j < len; j++) {
+      if (array[j] < array[smallest]) {
+        smallest = j;
+      }
+    }
+
+    if (smallest !== i) {
+      [array[i], array[smallest]] = [array[smallest], array[i]];
+    }
+  }
+
+  return array;
 }
 
 function insertionSort(array) {
