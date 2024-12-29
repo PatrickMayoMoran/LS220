@@ -71,15 +71,13 @@ function insertionSort(array) {
 
   for (let i = 1; i < len; i++) {
     let toBeInserted = array[i];
-    for (let j = i - 1; j >= 0 ; j--) {
-      if (toBeInserted < array[j]) {
-        array[j + 1] = array[j];
-        continue;
-      } else {
-        array[j + 1] = toBeInserted;
-        break;
-      }
+    let j = i - 1;
+
+    while (j >= 0 && toBeInserted < array[j]) {
+      array[j + 1] = array[j];
     }
+
+    array[j + 1] = toBeInserted;
   }
 
   return array;
