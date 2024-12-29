@@ -60,3 +60,7 @@ console.log("Input: ", stringifyList(head2));
 console.log("Output:", stringifyList(deleteTwos(head2)));
 // Input:  2 -> 3 -> 2 -> null
 // Output: 3 -> null
+const head3 = new ListNode(null);
+
+console.log("Input: ", stringifyList(head3));
+console.log("Output:", stringifyList(deleteTwos(head3)));
