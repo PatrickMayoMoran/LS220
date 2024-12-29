@@ -14,7 +14,7 @@ function deleteTwos(head) {
   let prev = dummyHead;
   let curr = head;
 
-  while (prev.next !== null) {
+  while (curr) {
     if (curr.val === 2) {
       prev.next = curr.next;
     } else {
