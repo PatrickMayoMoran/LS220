@@ -56,7 +56,33 @@ function selectionSort(array) {
   return array;
 }
 
+/*
+Insertion Sort:
+Time: O(N^2) - for every element, goes through sorted section on left to
+      determine placement
+Space: O(1) - no auxiliary space that scales with size of input 
+How? Builds from left to right by taking each next element and inserting it
+      in the correct position in the sorted array
+      Uses a buffer to move elements over
+*/
+
 function insertionSort(array) {
+  const len = array.length;
+
+  for (let i = 1; i < len; i++) {
+    let toBeInserted = array[i];
+    for (let j = i - 1; j >= 0 ; j--) {
+      if (toBeInserted < array[j]) {
+        array[j + 1] = array[j];
+        continue;
+      } else {
+        array[j + 1] = toBeInserted;
+        break;
+      }
+    }
+  }
+
+  return array;
 }
 
 console.log(bubbleSort(array));
