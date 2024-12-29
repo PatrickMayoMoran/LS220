@@ -12,9 +12,10 @@ How? Bubble refers to an imaginary bubble around two adjacent elements,
 
 function bubbleSort(array) {
   const len = array.length;
-  let swapped = false;
 
-  for (let i = 0; i < len; i++) {
+  for (let i = 0; i < len - 1; i++) {
+    let swapped = false;
+
     for (let j = 0; j < len - i - 1; j++) {
       if (array[j] > array[j + 1]) {
         [array[j], array[j + 1]] = [array[j + 1], array[j]];
