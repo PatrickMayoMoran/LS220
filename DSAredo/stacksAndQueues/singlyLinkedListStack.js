@@ -11,8 +11,7 @@ class Stack {
   }
   peek() {
     // Returns the value of the top most element without removing it.
-    if (!this.top) return null;
-    return this.top.val;
+    return this.top ? this.top.val : null;
     // If the stack is empty, it returns `null`.
   }
 
