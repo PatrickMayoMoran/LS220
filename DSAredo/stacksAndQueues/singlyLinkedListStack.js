@@ -17,11 +17,7 @@ class Stack {
 
   push(value) {
     // Adds an item to the stack
-    let newNode = new ListNode(value);
-    if (this.top) {
-      newNode.next = this.top;
-    }
-    this.top = newNode;
+    this.top = new ListNode(value, this.top);
   }
 
   pop() {
