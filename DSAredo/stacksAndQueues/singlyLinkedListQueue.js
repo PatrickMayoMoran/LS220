@@ -34,6 +34,7 @@ class Queue {
 
     let dequeuedNode = this.front;
     this.front = this.front.next;
+    if (this.front === null) this.back = null;
     return dequeuedNode;
     // If the queue is empty, it returns `null`.
   }
