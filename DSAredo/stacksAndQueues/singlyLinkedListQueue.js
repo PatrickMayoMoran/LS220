@@ -12,7 +12,7 @@ class Queue {
   }
   peek() {
     // Returns the value of the top most element without removing it.
-    return this.front.val;
+    return this.front ? this.front.val : null;
 
     // If the queue is empty, it returns `null`.
   }
