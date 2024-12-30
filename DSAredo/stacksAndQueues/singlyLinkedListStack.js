@@ -17,16 +17,22 @@ class Stack {
 
   push(value) {
     // Adds an item to the stack
-    let element = new ListNode(value);
+    let newNode = new ListNode(value);
     if (this.top) {
-      this.top.next = element;
+      newNode.next = this.top;
     }
-    this.top = element;
+    this.top = newNode;
   }
 
   pop() {
     // Removes the item from the stack and returns it
-
+    if (this.top) {
+      let poppedNode = this.top;
+      this.top = poppedNode.next;
+      return poppedNode;
+    } else {
+      return null;
+    }
     // If the stack is empty, it returns `null`.
   }
 }
