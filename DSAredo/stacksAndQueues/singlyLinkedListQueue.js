@@ -30,7 +30,11 @@ class Queue {
 
   dequeue() {
     // Removes the item from the queue and returns it
+    if (this.front === null) return null;
 
+    let dequeuedNode = this.front;
+    this.front = this.front.next;
+    return dequeuedNode;
     // If the queue is empty, it returns `null`.
   }
 }
