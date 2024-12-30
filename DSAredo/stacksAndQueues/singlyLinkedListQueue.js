@@ -22,6 +22,7 @@ class Queue {
     let newNode = new ListNode(value);
     if (this.back) {
       this.back.next = newNode;
+      this.back = newNode;
     } else {
       this.back = newNode;
       this.front = newNode;
