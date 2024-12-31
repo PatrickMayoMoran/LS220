@@ -37,14 +37,18 @@
 
 function hoppingChaos(n) {
   // implementation
+  const cache = {};
   function helper(n) {
     if (n === 1) return 1;
     if (n === 2) return 2;
+    if (cache[n]) return cache[n];
 
-    return helper(n - 1) + helper(n - 2);
+    let result = helper(n - 1) + helper(n - 2);
+    cache[n] = result;
+    return result;
   }
 
-  return helper(n, {});
+  return helper(n);
 }
 
 
