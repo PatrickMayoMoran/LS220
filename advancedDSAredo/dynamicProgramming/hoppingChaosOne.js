@@ -36,15 +36,15 @@
     // 5. Hop 2 stacks in one go, then hop 2 stacks in one go again.
 
 function hoppingChaos(n) {
-  // implementation
-  const cache = {};
+  const map = new Map();
+
   function helper(n) {
     if (n === 1) return 1;
     if (n === 2) return 2;
-    if (cache[n]) return cache[n];
+    if (map.has(n)) return map.get(n);
 
     let result = helper(n - 1) + helper(n - 2);
-    cache[n] = result;
+    map.set(n, result);
     return result;
   }
 
