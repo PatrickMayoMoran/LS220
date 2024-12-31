@@ -41,7 +41,7 @@ function hoppingChaos(n) {
     if (n === 1) return 1;
     if (n === 2) return 2;
 
-    helper(n - 1) + helper(n - 2);
+    return helper(n - 1) + helper(n - 2);
   }
 
   return helper(n, {});
