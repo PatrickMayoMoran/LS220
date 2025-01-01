@@ -28,10 +28,17 @@ const grid = [
 function chaosInTheGrid(grid) {
   let rows = grid.length;
   let cols = grid[0].length;
+  let cache = new Map();
 
   function helper(row, col) {
     if (row === 1 || col === 1) return 1;
-    return helper(row - 1, col) + helper(row, col - 1);
+
+    let key = `${row} ${col}`;
+    if (cache.has(key)) return cache.get(key);
+
+    let result = helper(row - 1, col) + helper(row, col - 1);
+    cache.set(key, result);
+    return result;
   }
 
   return helper(rows, cols);
