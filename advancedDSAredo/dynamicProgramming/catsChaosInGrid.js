@@ -37,10 +37,10 @@ function chaosInTheGridWithCats(grid) {
   let cache = new Map();
 
   function helper(row, col) {
-    if (grid[row][col] === 'C') return 0;
+    if (row < 0 || col < 0 || grid[row][col] === 'C') return 0;
     if (row === 0 && col === 0) return 1;
-    if (row === 0) return helper(row, col - 1);
-    if (col === 0) return helper(row - 1, col);
+    //if (row === 0) return helper(row, col - 1);
+    //if (col === 0) return helper(row - 1, col);
 
     let key = `${row} ${col}`;
     if (cache.has(key)) return cache.get(key);
