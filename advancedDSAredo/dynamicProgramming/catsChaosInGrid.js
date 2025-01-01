@@ -32,8 +32,8 @@ const grid = [
 // 1. Down -> Right -> Right
 
 function chaosInTheGridWithCats(grid) {
-  let rows = grid.length;
-  let cols = grid[0].length;
+  let rows = grid.length - 1;
+  let cols = grid[0].length - 1;
   let cache = new Map();
 
   function helper(row, col) {
