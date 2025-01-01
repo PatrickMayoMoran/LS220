@@ -31,7 +31,7 @@ function chaosInTheGrid(grid) {
   let cache = new Map();
 
   function helper(row, col) {
-    if (row === 1 || col === 1) return 1;
+    if (row === 0 || col === 0) return 1;
 
     let key = `${row} ${col}`;
     if (cache.has(key)) return cache.get(key);
@@ -41,7 +41,7 @@ function chaosInTheGrid(grid) {
     return result;
   }
 
-  return helper(rows, cols);
+  return helper(rows - 1, cols - 1);
 }
 
 // Test cases
