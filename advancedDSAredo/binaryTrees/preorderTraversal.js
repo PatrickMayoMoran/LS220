@@ -46,14 +46,15 @@ function buildTree(arr) {
 
 function preorderTraversal(root) {
   let nodes = [];
-  function helper(node) {
+
+  function traverse(node) {
     if (node === null) return;
     nodes.push(node.val);
-    helper(node.left);
-    helper(node.right);
+    traverse(node.left);
+    traverse(node.right);
   }
 
-  helper(root);
+  traverse(root);
   return nodes;
 }
 // Test Cases:
