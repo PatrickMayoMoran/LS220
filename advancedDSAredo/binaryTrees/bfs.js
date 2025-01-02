@@ -69,7 +69,7 @@ function bfs(root) {
   let currentNode;
 
   while (queue.length > 0) {
-    currentNode = queue.shift;
+    currentNode = queue.shift();
     if (currentNode === null) continue;
 
     queue.push(currentNode.left, currentNode.right);
