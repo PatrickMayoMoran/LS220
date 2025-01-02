@@ -30,6 +30,14 @@ class Node {
 
 function getHeight(root) {
   // implementation of getting height here
+  function helper(node) {
+    if (!node) return 0;
+    if (node.left === null && node.right === null) return 1;
+
+    return 1 + Math.max(helper(node.left), helper(node.right));
+  }
+
+  return helper(root);
 }
 
 // Helper function for test cases
