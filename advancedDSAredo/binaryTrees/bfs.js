@@ -62,6 +62,7 @@ ALGORITHM
     add its values to the result array
     add its children to the queue
 */
+/*
 function bfs(root) {
   const queue = [];
   const nodes = [];
@@ -77,6 +78,25 @@ function bfs(root) {
   }
 
   return nodes;
+}
+*/
+
+// provided Solution
+function bfs(root) {
+  const result = [];
+  if (root === null) return result;
+
+  const queue = [root];
+
+  while (queue.length > 0) {
+    const node = queue.shift();
+    result.push(node.val);
+
+    if (node.left !== null) queue.push(node.left);
+    if (node.right !== null) queue.push(node.right);
+  }
+
+  return result;
 }
 // Test cases
 const tree1 = buildTree([1, null, 2, 3]);
