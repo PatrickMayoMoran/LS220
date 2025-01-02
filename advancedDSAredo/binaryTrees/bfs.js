@@ -70,8 +70,9 @@ function bfs(root) {
 
   while (queue.length > 0) {
     currentNode = queue.shift;
-    queue.push(currentNode.left, currentNode.right);
     if (currentNode === null) continue;
+
+    queue.push(currentNode.left, currentNode.right);
     nodes.push(currentNode.val);
   }
 
@@ -80,6 +81,9 @@ function bfs(root) {
 // Test cases
 const tree1 = buildTree([1, null, 2, 3]);
 console.log(bfs(tree1)); // Output: [1, 2, 3]
+
+const tree13 = buildTree([1, null, null]);
+console.log(bfs(tree13)); // Output: [1];
 
 const tree2 = buildTree([1, 2, 3, null, null, 4, null, null, 5]);
 console.log(bfs(tree2)); // Output: [1, 2, 3, 4, 5]
