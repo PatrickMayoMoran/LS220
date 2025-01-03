@@ -24,7 +24,7 @@ function largestForestArea(grid) {
     // Implementation goes here
     if (!grid || grid.length === 0) return 0;
 
-    const areas = [0];
+    let largestForest = 0;
     rows = grid.length;
     cols = grid[0].length;
 
@@ -46,16 +46,17 @@ function largestForestArea(grid) {
       return 1 + left + right + above + below;
     }
 
+    let currentForest = 0;
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
         if (grid[row][col] === 'T') {
-          let area = dfs(row, col);
-          areas.push(area);
+          currentForest = dfs(row, col);
+          largestForest = Math.max(largestForest, currentForest);
         }
       }
     }
 
-    return Math.max(...areas);
+    return largestForest;
 }
 
 // Test cases
