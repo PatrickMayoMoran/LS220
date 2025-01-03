@@ -17,7 +17,9 @@ function hasPath(edgeList, src, dst) {
     for (let neighbor of neighbors) {
       if (!visited.has(neighbor)) {
         visited.add(neighbor);
-        return traverse(neighbor);
+        if (traverse(neighbor)) {
+          return true;
+        }
       }
     }
 
