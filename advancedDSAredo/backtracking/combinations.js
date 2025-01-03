@@ -17,9 +17,6 @@ function combinations(nums, k) {
     
     for (let n = 0; n < nums.length; n++) {
       let num = nums[n];
-      if (candidate.includes(num)) {
-        continue;
-      }
       candidate.push(num);
       backtrack(nums.slice(n+1));
       candidate.pop(num);
