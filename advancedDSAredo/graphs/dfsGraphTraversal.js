@@ -3,6 +3,7 @@
 // The function should print the vertices in preorder depth-first
 // traversal order.
 
+/* STACK VERSION
 function dfs(adjList, source) {
   // implementation goes here
   const stack = [source];
@@ -11,6 +12,18 @@ function dfs(adjList, source) {
     console.log(vertex);
     stack.push(...adjList.get(vertex));
   }
+}
+*/
+
+// RECURSION
+function dfs(adjList, source) {
+  function helper(vertex) {
+    console.log(vertex);
+    let neighbors = adjList.get(vertex);
+    neighbors.forEach(n => helper(n));
+  }
+
+  helper(source);
 }
 
 const adjList = new Map();
