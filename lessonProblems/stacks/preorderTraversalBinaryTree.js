@@ -29,6 +29,7 @@ ALGORITHM:
   return result
 */
 
+/*
 function preorderTraversal(root) {
   const result = [];
   const stack = [root];
@@ -39,6 +40,24 @@ function preorderTraversal(root) {
 
     result.push(currentNode.val);
     stack.push(currentNode.right, currentNode.left);
+  }
+
+  return result;
+}
+*/
+
+function preorderTraversal(root) {
+  const result = [];
+  if (root === null) return result;
+
+  const stack = [root];
+
+  while (stack.length > 0) {
+    let node = stack.pop();
+    result.push(node.val);
+
+    if (node.right !== null) stack.push(node.right);
+    if (node.left !== null) stack.push(node.left);
   }
 
   return result;
