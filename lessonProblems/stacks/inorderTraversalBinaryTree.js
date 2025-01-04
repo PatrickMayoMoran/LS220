@@ -44,15 +44,15 @@ function inorderTraversal(root) {
   const stack = [root];
 
   while (stack.length > 0) {
-    let currentNode = stack[stack.length - 1];
-    if (currentNode.left !== null) {
-      stack.push(currentNode.left);
+    let node = stack[stack.length - 1];
+    if (node.left !== null) {
+      stack.push(node.left);
       continue;
     }
 
-    currentNode = stack.pop();
-    //result.push(currentNode.val);
-    if (currentNode.right !== null) stack.push(currentNode.right);
+    let node = stack.pop();
+    result.push(node.val);
+    if (node.right !== null) stack.push(node.right);
   }
 
   return result;
