@@ -42,6 +42,7 @@ ALGORITHM:
   return result.length
 */
 
+/* START-END POINTER STRATEGY
 function minLengthForTargetSum(nums, target) {
   let start = 0;
   let end = nums.length - 1;
@@ -63,6 +64,28 @@ function minLengthForTargetSum(nums, target) {
   }
 
   return result;
+}
+*/
+
+// ANCHOR RUNNER POINTER STRATEGY
+function minLengthForTargetSum(nums, target) {
+  let anchor = 0;
+  let runner = 0;
+  let shortest;
+  let sum = nums[runner];
+
+  while (runner < nums.length && anchor <= runner) {
+    if (sum >= target) {
+      shortest = shortest ? (runner - anchor + 1) : Math.min(shortest, (runner - anchor + 1));
+      sum -= nums[anchor];
+      anchor++;
+    } else {
+      runner++;
+      sum += nums[runner];
+    }
+  }
+
+  return shortest || 0;
 }
 
 console.log(minLengthForTargetSum([1, 2, 3], 5) === 2);
