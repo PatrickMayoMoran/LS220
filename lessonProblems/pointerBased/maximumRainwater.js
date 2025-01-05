@@ -76,17 +76,17 @@ function maxRainwater(barriers) {
 
   while (start < end) {
     let width = end - start;
-    let height = Math.min(...barriers.slice(start,end + 1));
+    let height = Math.min(barriers[start], barriers[end]);
     let volume = width * height;
     maxVolume = volume > maxVolume ? volume : maxVolume;
 
     if (barriers[start] < barriers[end]) {
       start++;
     } else if (barriers[start] > barriers[end]) {
-      barriers--;
+      end--;
     } else {
       start++;
-      barriers--
+      end--
     }
   }
 
