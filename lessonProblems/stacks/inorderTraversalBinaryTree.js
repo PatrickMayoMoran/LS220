@@ -37,6 +37,7 @@ ALGORITHM:
   return result
 */
 
+/* ORIGINAL SOLUTION - Use set to mark visited nodes and avoid reprocessing
 function inorderTraversal(root) {
   const result = [];
   if (root === null) return result;
@@ -58,6 +59,10 @@ function inorderTraversal(root) {
   }
 
   return result;
+}
+*/
+
+function inorderTraversal(root) {
 }
 
 class Node {
