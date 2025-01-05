@@ -18,34 +18,40 @@ DATA STRUCTURE:
 
 ALGORITHM:
   initialize a result array
-  initialize a stack
-  initialize current variable pointing at root
+  initialize a stack 1 with root
+  initialize a stack 2 empty
 
-  while current is a node or the stack is not empty,
-    while current is a node
-      add current to stack
-      make prev current
-      make current current left
+  while stack 1 has any length
+    pop from stack
+    push to stack 2
+    if there's a left child, add it to stack 1
+    if there's a right child, add it to stack 1
 
-    current assigned to prev
+  while stack 2 has any length
+    pop and add to result array
 
-    while current is a node
-      
-
-
-      if current left is a node
-        make current left child
-      else if current right is a node
-        make current right child
-      else
-        break;
-
-    cu
+  return result
 
 */
 
 function postorderTraversal(root) {
-  // Implementation goes here
+  const result = [];
+  const stack1 = [root];
+  const stack2 = [];
+
+  while (stack1.length > 0) {
+    const node = stack1.pop();
+    stack2.push(node);
+    if (node.left !== null) stack1.push(node.left);
+    if (node.right !== null) stack1.push(node.right);
+  }
+
+  while (stack2.length > 0) {
+    const node = stack2.pop();
+    result.push(node.val);
+  }
+
+  return result;
 }
 
 class Node {
