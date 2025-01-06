@@ -33,6 +33,10 @@ DATA STRUCTURES:
 EXAMPLE:
 [1,1,2]
 [1,1,1]
+dummy -> null -> 1
+prev -> dummy
+curren -> 1
+prev
 ALGORITHM:
   High Level
     set dummy node to point to head as its next
@@ -79,13 +83,13 @@ function createLinkedList(arr) {
 }
 
 function removeDuplicates(head) {
-  let dummy = new ListNode(null, head);
+  let dummy = new ListNode(0, head);
   let previous = dummy;
   let current = head;
 
   while (current !== null) {
-    if (current.next === current) {
-      while (current.next === current) {
+    if (current.next !== null && current.next.val === current.val) {
+      while (current.next !== null && current.next.val === current.val) {
         current.next = current.next.next;
       }
       current = current.next;
