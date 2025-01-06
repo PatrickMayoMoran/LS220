@@ -87,6 +87,19 @@ function removeDuplicates(head) {
   let previous = dummy;
   let current = head;
 
+  while (current !== null && current.next !== null) {
+    if (current.val !== current.next.val) {
+      previous = current;
+      current = current.next;
+    } else {
+      while (current.next !== null && current.next.val === current.val) {
+        current = current.next;
+      }
+      previous.next = current;
+      current = current.next;
+    }
+  }
+  /* Original logic
   while (current !== null) {
     if (current.next !== null && current.next.val === current.val) {
       while (current.next !== null && current.next.val === current.val) {
@@ -99,6 +112,7 @@ function removeDuplicates(head) {
       current = current.next;
     }
   }
+  */
 
   return dummy.next;
 }
