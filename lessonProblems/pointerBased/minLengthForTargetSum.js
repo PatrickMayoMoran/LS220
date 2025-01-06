@@ -76,7 +76,7 @@ function minLengthForTargetSum(nums, target) {
 
   while (runner < nums.length && anchor <= runner) {
     if (sum >= target) {
-      shortest = shortest ? (runner - anchor + 1) : Math.min(shortest, (runner - anchor + 1));
+      shortest = shortest ? Math.min(shortest, (runner - anchor + 1)) : runner - anchor + 1;
       sum -= nums[anchor];
       anchor++;
     } else {
