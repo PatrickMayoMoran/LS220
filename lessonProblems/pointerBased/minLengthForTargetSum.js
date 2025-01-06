@@ -71,9 +71,19 @@ function minLengthForTargetSum(nums, target) {
 function minLengthForTargetSum(nums, target) {
   let anchor = 0;
   let runner = 0;
-  let shortest;
-  let sum = nums[runner];
+  let shortest = nums.length + 1;
+  let sum = 0;
 
+  while (runner < nums.length) {
+    sum += nums[runner];
+    while (sum >= target) {
+      shortest = Math.min(shortest, (runner - anchor + 1));
+      sum -= nums[anchor];
+      anchor++;
+    }
+    runner++;
+  }
+  /*
   while (runner < nums.length && anchor <= runner) {
     if (sum >= target) {
       shortest = shortest ? Math.min(shortest, (runner - anchor + 1)) : runner - anchor + 1;
@@ -84,8 +94,9 @@ function minLengthForTargetSum(nums, target) {
       sum += nums[runner];
     }
   }
+  */
 
-  return shortest || 0;
+  return shortest === nums.length + 1 ? 0 : shortest;
 }
 
 console.log(minLengthForTargetSum([1, 2, 3], 5) === 2);
