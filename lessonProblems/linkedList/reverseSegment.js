@@ -108,7 +108,7 @@ function createLinkedList(arr) {
 function reverseSegment(head, start, end) {
   // Implementation goes here
   let dummy = new ListNode(0, head);
-  let previous = null;
+  let previous = dummy;
   let current = head;
   let counter = 1;
 
@@ -120,18 +120,18 @@ function reverseSegment(head, start, end) {
 
   let beforeReverse = previous;
   let newEnd = current;
-  let next = current.next;
+
   while (current !== null && counter <= end) {
-    next = current.next;
+    let next = current.next;
     current.next = previous;
     previous = current;
     current = next;
     counter += 1;
   }
   beforeReverse.next = previous;
-  newEnd.next = next;
+  newEnd.next = current;
 
-  return dummy.head;
+  return dummy.next;
 }
 
 let list1 = createLinkedList([1, 3, 5, 7, 9]);
