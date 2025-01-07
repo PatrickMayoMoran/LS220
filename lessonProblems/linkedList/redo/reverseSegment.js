@@ -105,6 +105,11 @@ let list2 = createLinkedList([1, 2, 3]);
 let list3 = createLinkedList([1]);
 let list4 = createLinkedList([1, 2, 3, 4, 5, 6]);
 let list5 = createLinkedList([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+let list6 = createLinkedList([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
+let list7 = createLinkedList([1, 2]);
+
+console.log(list6);
+console.log(list7);
 
 printLinkedList(reverseSegment(list1, 2, 4)); // Expected: 1 -> 7 -> 5 -> 3 -> 9 -> null
 printLinkedList(reverseSegment(list2, 1, 3)); // Expected: 3 -> 2 -> 1 -> null
