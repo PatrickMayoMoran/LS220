@@ -64,6 +64,10 @@ ALGORITHM
   return dummy next
 
 */
+/* ORIGINAL IMPLEMENTATION -
+    since length of list is guaranteed to be at least 2,
+    just use current.next.next to check for end and find 2nd to last node
+
 function removeSecondToLast(head) {
   let dummy = new ListNode(0, head);
   let previous = dummy;
@@ -75,6 +79,29 @@ function removeSecondToLast(head) {
   }
 
   previous.next = current.next;
+  return dummy.next;
+}
+*/
+
+// ALGORITHM
+// fast-slow: use two pointers, one moving "fast" and one moving "slow"
+// start slow at dummy
+// start fast at two ahead of head
+// move them both together one at a time
+// once fast is null, slow is node before one to be removed
+
+// This "Fast" is same as my current.next.next basicall
+function removeSecondToLast(head) {
+  let dummy = new ListNode(0, head);
+  let slow = dummy;
+  let fast = head.next.next;
+
+  while (fast !== null) {
+    slow = slow.next;
+    fast = fast.next;
+  }
+
+  slow.next = slow.next.next;
   return dummy.next;
 }
 // Test cases
