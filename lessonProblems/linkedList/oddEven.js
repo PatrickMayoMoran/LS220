@@ -81,6 +81,7 @@ function createLinkedList(arr) {
       return head
 
 */
+/* ORIGINAL IMPLEMENTATION
 function reorderOddEven(head) {
   if (head === null || head.next === null) return head;
 
@@ -108,6 +109,27 @@ function reorderOddEven(head) {
    }
 
   lastOdd.next = firstEven;
+
+  return head;
+}
+*/
+
+// Own implementation of walkthrough
+function reorderOddEven(head) {
+  if (head === null || head.next === null) return head;
+
+  let odd = head;
+  let even = head.next;
+  let evenHead = head.next;
+
+  while (even && even.next) {
+    odd.next = odd.next.next;
+    even.next = even.next.next;
+    odd = odd.next;
+    even = even.next;
+  }
+
+  odd.next = evenHead;
 
   return head;
 }
