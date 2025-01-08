@@ -92,11 +92,17 @@ function removeSecondToLast(head) {
 
 // This "Fast" is same as my current.next.next basicall
 function removeSecondToLast(head) {
+  let gap = 2 // this could be a parameter for removing nth to last node
   let dummy = new ListNode(0, head);
-  let slow = dummy;
-  let fast = head.next.next;
 
-  while (fast !== null) {
+  let slow = dummy;
+  let fast = head;
+
+  for (let i = 0; i < gap; i++) {
+    fast = fast.next;
+  }
+
+  while (fast) { // for checking for not null, can just use truthy fast value
     slow = slow.next;
     fast = fast.next;
   }
