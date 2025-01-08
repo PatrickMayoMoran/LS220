@@ -46,8 +46,68 @@ function createLinkedList(arr) {
   return head.next;
 }
 
+/*
+  RULES
+    first node, head node, is considered odd - position 1
+    empty or single node, return original
+
+  Example
+   [1, 2]
+
+  ALGORITHM: 
+    build two dummy lists: one of odd nodes, one of even nodes, and then 
+      attach them at the end
+      end of odd points at head of even
+      end of even points at null
+
+      current pointer starting at head
+      lastOdd pointer for end of odd list also head
+      first even pointer for beginning of even as head.next
+      currentEven points at first Even
+
+      slide current to current.next.next
+
+      while current isn't null && current.next isn't null
+        lastOdd next points at current
+        currentEven next points at current.next (2 points at 4)
+        current.next points to current.next.next (3 points at 5, 4 removed)
+        
+        currentEven slides to currentEven.next (2 slides to 4
+        lastOdd slides to current (1 slides to 3)
+        current slides to current.next (3 slides to 5 or null);
+
+      lastOdd next points at firsteven
+
+      return head
+
+*/
 function reorderOddEven(head) {
   if (head === null || head.next === null) return head;
+
+  let current = head;
+  let lastOdd = head;
+  let firstEven = head.next;
+  let currentEven = firstEven;
+
+  current = current.next.next;
+
+  while (current && current.next) {
+    lastOdd.next = current;
+    currentEven.next = current.next;
+    current.next = current.next.next;
+
+    currentEven = currentEven.next;
+    lastOdd = current;
+    current = current.next;
+  }
+
+  if (current) {
+     currentEven.next = null;
+     lastOdd.next = current;
+     lastOdd = current;
+   }
+
+  lastOdd.next = firstEven;
 
   return head;
 }
