@@ -54,10 +54,20 @@ function findMax(nums) {
     let mid = Math.floor((left + right) / 2);
     let candidate = nums[mid];
 
+  
+
     if (mid === 0) {
-      if (candidate > nums[mid + 1]) return candidate;
+      if (candidate > nums[mid + 1]) {
+        return candidate;
+      } else {
+        return nums[mid + 1];
+      }
     } else if (mid === nums.length - 1) {
-      if (candidate > nums[mid - 1]) return candidate;
+      if (candidate > nums[mid - 1]) {
+        return candidate;
+      } else {
+        return nums[mid - 1];
+      }
     } else {
       let toTheRight = nums[mid + 1];
       let toTheLeft = nums[mid - 1];
