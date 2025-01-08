@@ -98,7 +98,7 @@ function removeSecondToLast(head) {
   let slow = dummy;
   let fast = head;
 
-  for (let i = 0; i < gap; i++) {
+  for (let i = 0; i < gap; i++) { // i < gap is refactoring for any size gap
     fast = fast.next;
   }
 
