@@ -24,9 +24,10 @@ function findPeakInTerrain(terrain) {
 
     if (terrain[mid] > (terrain[mid - 1] || 0) && (terrain[mid] > (terrain[mid + 1] || 0))) {
       return mid;
+    } else if (mid > 0 && terrain[mid - 1] > terrain[mid]) {
+      return findPeak(start, mid - 1);
     } else {
-      return findPeak(start, mid);
-      return findPeak(mid, end);
+        return findPeak(mid + 1, end);
     }
   }
 
