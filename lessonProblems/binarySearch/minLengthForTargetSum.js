@@ -86,7 +86,7 @@ function minLengthForTargetSum(nums, target) {
     let validLength = isValidLength(nums, target, mid);
 
     if (validLength) {
-      smallest = validLength;
+      smallest = mid;
       right = mid - 1;
     } else {
       left = mid + 1;
