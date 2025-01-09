@@ -58,8 +58,6 @@ function findMax(nums) {
 
     if (candidate > toTheLeft && candidate > toTheRight) {
       return candidate;
-    } else if (candidate < toTheLeft && candidate < toTheRight) {
-      return toTheLeft;
     } else if (toTheRight > nums[0]) {
       left = mid + 1;
     } else {
