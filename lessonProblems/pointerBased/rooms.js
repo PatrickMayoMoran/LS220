@@ -31,6 +31,29 @@
 
 // Test Cases:
 
+function rooms(meetings) {
+  if (meetings.length === 0 || !meetings) return 0;
+
+  let startTimes = meetings.map(([s, e]) => s).sort((a,b) => a - b);
+  let endTimes = meetings.map(([s, e]) => e).sort((a,b) => a - b);
+
+  let numRooms = 0;
+
+  let start = 0;
+  let end = 0;
+
+  while (start < startTimes.length) {
+    if (startTimes[start] < endTimes[end]) {
+      numRooms++;
+    } else {
+      end++;
+    }
+    start++;
+  }
+
+  return numRooms;
+}
+
 console.log(rooms([[20, 25], [10, 15], [0, 25]]) === 2);
 console.log(rooms([[5, 9], [1, 3]]) === 1);
 console.log(rooms([[1, 2], [3, 4], [5, 6]]) === 1);
