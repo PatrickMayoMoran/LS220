@@ -72,14 +72,11 @@ function longestSubstringLength(string) {
 
   for (let r = 0; r < string.length; r++) {
     let char = string[r];
-    if (!map.has(char)) {
-      map.set(char, r);
-    } else if (map.has(char) && (map.get(char) >= a)) {
+    if (map.has(char) && (map.get(char) >= a)) {
       a = map.get(char) + 1;
       map.set(char, r);
-    } else {
-      map.set(char, r);
     }
+    map.set(char, r);
     length = Math.max(length, r - a + 1);
   }
 
