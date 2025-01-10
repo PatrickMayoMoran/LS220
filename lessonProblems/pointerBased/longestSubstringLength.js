@@ -25,6 +25,8 @@
       keep going?
 
 */
+
+/* ORIGINAL SOLUTION - Two pointers with set
 function longestSubstringLength(string) {
   let length = 0;
   let anchor = 0;
@@ -50,6 +52,35 @@ function longestSubstringLength(string) {
     seen.delete(string[anchor]);
     currentLength--;
     anchor++;
+  }
+
+  return length;
+}
+*/
+
+// PROVIDED SOLUTION
+// Use a map to track letters with their most recently occurred index
+// if the index of an encountered letter is greater than the anchor, 
+//  need to reset
+// if the index in the map of an encountered letter is less than the anchor,
+//  update the map and keep going
+// length is continuously assigned to the max of length and r - a + 1
+function longestSubstringLength(string) {
+  let a = 0;
+  let length = 0;
+  let map = new Map();
+
+  for (let r = 0; r < string.length; r++) {
+    let char = string[r];
+    if (!map.has(char)) {
+      map.set(char, r);
+    } else if (map.has(char) && (map.get(char) > a)) {
+      a = map.get(char) + 1;
+      map.set(char, r);
+    } else {
+      map.set(char, r);
+    }
+    length = Math.max(length, r - a + 1);
   }
 
   return length;
