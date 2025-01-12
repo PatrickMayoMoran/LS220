@@ -58,9 +58,69 @@
 // "-" - Remove the previous score, scoreboard is now [].
 // Since the scoreboard is empty, the total sum is 0.
 
+/*
+GOAL: Given an array of game actions, calculate the total of the scoreboard 
+      at the ned
+
+INPUT: array
+OUTPUT: integer
+
+RULES:
+  Single Array argument? Yes
+  Only valid game actions
+  Any other number values? No, just positive and negative integers
+  All elements of array are strings
+
+  What gets added to the scoreboard?
+    integer: add it
+    *: add double the previous number
+    +: add the previous two summed together
+    -: remove topmost score
+
+DATA STRUCTURES:
+  scoreboard as a stack
+
+ALGORITHM
+  create an empty scoreboard stack
+  create a match for the actions
+  iterate through every element of the actions
+    if element is a match for one of the three actions,
+      perform that action
+        addition of previous two
+        removal of top
+        add double the top
+    otherwise, 
+      add the integer version to the board
+
+  return the sum of all the numbers on the scoreboard
+*/
 function nexusSurge(actions) {
-    // implementation goes here
+  const scoreboard = [];
+  let valid = ["+", "-", "*"];
+
+  for (let i = 0; i < actions.length; i++) {
+    let action = actions[i];
+    if (valid.includes(action)) {
+      if (action === '-') {
+        scoreboard.pop();
+      } else if (action === '*') {
+        let newNumber = scoreboard[scoreboard.length - 1] * 2;
+        scoreboard.push(newNumber);
+      } else {
+        let lastNumber = scoreboard.pop();
+        let secondLast = scoreboard[scoreboard.length - 1];
+        let sum = lastNumber + secondLast;
+        scoreboard.push(lastNumber);
+        scoreboard.push(sum);
+      }
+    } else {
+      scoreboard.push(parseInt(action));
+    }
+  }
+
+  return scoreboard.reduce((acc, v) => acc + v, 0);
 }
+
 
 console.log(nexusSurge(["3", "4", "+"]) === 14);
 console.log(nexusSurge(["5", "-", "-2"]) === -2);
