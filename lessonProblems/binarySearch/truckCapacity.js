@@ -50,7 +50,7 @@
       sum of all the elements
 */
 function findTruckCapacity(orderVolumes, maxTrips) {
-  let biggestLoad = Math.max(orderVolumes);
+  let biggestLoad = Math.max(...orderVolumes);
   let totalLoad = orderVolumes.reduce((acc, v) => acc + v);
   if (maxTrips === orderVolumes.length) return biggestLoad;
   if (maxTrips === 1) return totalLoad;
@@ -88,16 +88,16 @@ function testCapacity(capacity, volumes, trips) {
   return tripsNeeded;
 }
 
-console.log(findTruckCapacity([6, 3, 8, 2, 5, 4, 7], 3)); // 15);
-console.log(findTruckCapacity([3, 2, 5, 8, 4], 3)); // 10);
-console.log(findTruckCapacity([1, 2, 3, 4, 5], 1)); // 15);
-console.log(findTruckCapacity([10, 20, 30, 40, 50], 5)); // 50);
-console.log(findTruckCapacity([5, 5, 5, 5, 5], 2)); // 15);
-console.log(findTruckCapacity([7, 3, 9, 4, 2, 8, 6], 2)); // 20);
-console.log(findTruckCapacity([100], 1)); // 100);
-console.log(findTruckCapacity([1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 3)); // 4);
-console.log(findTruckCapacity([10, 20, 30, 40, 50], 2)); // 90);
-console.log(findTruckCapacity([50, 40, 30, 20, 10], 3)); // 60);
-console.log(findTruckCapacity([5, 10, 15, 20, 25], 1)); // 75);
-console.log(findTruckCapacity([3, 2, 4, 1, 5], 10)); // 5);
-console.log(findTruckCapacity([1000, 1000, 1000, 1000], 3)); // 2000);
+console.log(findTruckCapacity([6, 3, 8, 2, 5, 4, 7], 3) === 15);
+console.log(findTruckCapacity([3, 2, 5, 8, 4], 3) === 10);
+console.log(findTruckCapacity([1, 2, 3, 4, 5], 1) === 15);
+console.log(findTruckCapacity([10, 20, 30, 40, 50], 5) === 50);
+console.log(findTruckCapacity([5, 5, 5, 5, 5], 2) === 15);
+console.log(findTruckCapacity([7, 3, 9, 4, 2, 8, 6], 2) === 20);
+console.log(findTruckCapacity([100], 1) === 100);
+console.log(findTruckCapacity([1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 3) === 4);
+console.log(findTruckCapacity([10, 20, 30, 40, 50], 2) === 90);
+console.log(findTruckCapacity([50, 40, 30, 20, 10], 3) === 60);
+console.log(findTruckCapacity([5, 10, 15, 20, 25], 1) === 75);
+console.log(findTruckCapacity([3, 2, 4, 1, 5], 10) === 5);
+console.log(findTruckCapacity([1000, 1000, 1000, 1000], 3) === 2000);
