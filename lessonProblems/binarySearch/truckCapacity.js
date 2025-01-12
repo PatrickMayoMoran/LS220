@@ -61,7 +61,7 @@ function findTruckCapacity(orderVolumes, maxTrips) {
 
   while (left <= right) {
     let capacity = Math.floor((left + right) / 2);
-    let tripsNeeded = testCapacity(capacity, orderVolumes, maxTrips);
+    let tripsNeeded = testCapacity(capacity, orderVolumes);
     if (tripsNeeded <= maxTrips) {
       smallestCapacity = capacity;
       right = capacity - 1;
@@ -73,11 +73,11 @@ function findTruckCapacity(orderVolumes, maxTrips) {
   return smallestCapacity;
 }
 
-function testCapacity(capacity, volumes, trips) {
+function testCapacity(capacity, volumes) {
   let tripsNeeded = 1;
 
   let cumulativeLoad = 0;
-  for (let i = 0; i++; i < volumes.length) {
+  for (let i = 0; i < volumes.length; i++) {
     cumulativeLoad += volumes[i];
     if (cumulativeLoad > capacity) {
       tripsNeeded++;
@@ -87,6 +87,8 @@ function testCapacity(capacity, volumes, trips) {
 
   return tripsNeeded;
 }
+
+console.log(testCapacity(15, [6, 3, 8, 2, 5, 4, 7]));
 
 console.log(findTruckCapacity([6, 3, 8, 2, 5, 4, 7], 3) === 15);
 console.log(findTruckCapacity([3, 2, 5, 8, 4], 3) === 10);
