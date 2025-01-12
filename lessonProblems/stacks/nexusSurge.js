@@ -96,11 +96,11 @@ ALGORITHM
 */
 function nexusSurge(actions) {
   const scoreboard = [];
-  let valid = ["+", "-", "*"];
+  let valid = /^[-+*]{1}$/;
 
   for (let i = 0; i < actions.length; i++) {
     let action = actions[i];
-    if (valid.includes(action)) {
+    if (valid.test(action)) {
       if (action === '-') {
         scoreboard.pop();
       } else if (action === '*') {
