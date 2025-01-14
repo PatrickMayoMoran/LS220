@@ -74,7 +74,7 @@ function findLeft(array, target) {
   while (left <= right) {
     let mid = Math.floor((left + right) / 2);
     let candidate = array[mid];
-    if (candidate === target &&& candidate > array[mid - 1]) {
+    if (candidate === target && candidate > array[mid - 1]) {
       return mid;
     } else if (candidate >= target && candidate >= array[mid - 1]) {
       right = mid - 1;
@@ -88,11 +88,33 @@ function findLeft(array, target) {
 
 function isTargetFrequent(array, target) {
   if (array.length <= 3) return false;
+  let right = findRight(array, target);
+  let left = findLeft(array, target);
 
-  return findLeft(array, target);
+  return (right - left + 1) > 3;
 }
 
 function findRight(array, target) {
+  const len = array.length - 1;
+  if (array[len - 1] === target) return len - 1;
+
+  let left = 0;
+  let right = len - 1;
+
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+    let candidate = array[mid];
+    
+    if (candidate === target && candidate < array[mid + 1]) {
+      return mid;
+    } else if (candidate <= target && candidate <= array[mid + 1]) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+
+  return -1;
 }
 console.log(isTargetFrequent([1, 2, 3, 3, 3, 3, 4], 3) === true);
 console.log(isTargetFrequent([1, 1, 1, 1, 2, 3, 4], 1) === true);
@@ -101,4 +123,4 @@ console.log(isTargetFrequent([1, 1, 3, 4, 5], 2) === false );
 console.log(isTargetFrequent([2, 2, 2, 3, 3, 3, 4], 3) === false);
 console.log(isTargetFrequent([4, 4, 4, 4, 4, 4, 4], 4) === true);
 
-// All test cases should log true.
+// All test cases should log true
