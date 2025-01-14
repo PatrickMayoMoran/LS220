@@ -58,14 +58,15 @@ function findAverages(nums, k) {
     end++;
   }
 
+  let average = rollingSum / k;
+  result.push(average);
+
   while (end < nums.length) {
-    let average = rollingSum / k;
-    console.log("rolling sum", rollingSum, "average", average);
-    result.push(average);
-    rollingSum -= rollingSum;
+    rollingSum += nums[end] - nums[start];
     start++;
     end++;
-    rollingSum += nums[end];
+    average = rollingSum / k;
+    result.push(average);
   }
 
   return result;
