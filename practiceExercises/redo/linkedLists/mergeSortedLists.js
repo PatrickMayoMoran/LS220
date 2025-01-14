@@ -47,17 +47,7 @@ function mergeSortedLists(head1, head2) {
     }
   }
 
-  while (list1) {
-    newList.next = list1;
-    newList = list1;
-    list1 = list1.next;
-  }
-
-  while (list2) {
-    newList.next = list2;
-    newList = list2;
-    list2 = list2.next;
-  }
+  newList.next = list1 === null ? list2 : list1;
 
   return dummy.next;
 }
