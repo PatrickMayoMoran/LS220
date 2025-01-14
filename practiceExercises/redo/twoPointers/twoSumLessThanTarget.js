@@ -42,19 +42,21 @@ DSA
 function twoSumLessThanTarget(nums, target) {
   nums.sort((a,b) => a - b);
 
-  let anchor = 0;
-  let runner = 1;
+  let start = 0;
+  let end = nums.length - 1;
   let greatestSum = -1;
 
-  while (runner < nums.length && nums[runner] < target && anchor < target) {
-    let sum = nums[anchor] + nums[runner];
+  while (start < end) {
+    let sum = nums[start] + nums[end];
     if (sum > greatestSum && sum < target) {
       greatestSum = sum;
-      runner++;
-    } else if (sum < greatestSum) {
-      runner++;
+      start++;
+    } else if (sum > greatestSum && sum >= target) {
+      end--;
+    } else if (sum <= greatestSum) {
+      start++;
     } else if (sum >= target) {
-      anchor++;
+      end--;
     }
   }
 
